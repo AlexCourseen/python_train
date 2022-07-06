@@ -48,3 +48,9 @@ class ContactHelper:
         #submit deletion
         wd.find_element_by_xpath("//*[@type='button'][@value='Delete']").click()
         wd.switch_to.alert.accept()
+
+    def count_contacts(self):
+        wd = self.app.wd
+        self.home_page()
+        return len(wd.find_elements_by_name("selected"))
+
