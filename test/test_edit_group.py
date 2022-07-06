@@ -2,8 +2,12 @@ from model.group import Group
 
 
 def test_edit_group_name(app):
+    if app.group.count() == 0:
+        app.group.create(Group(name="test"))
     app.group.edit_group(Group(name="EditName"))
 
 
 def test_edit_group_header(app):
-    app.group.edit_first_group(Group(header="EditHeader"))
+    if app.group.count() == 0:
+        app.group.create(Group(name="test", header="testHeader"))
+    app.group.edit_group(Group(header="EditHeader"))
