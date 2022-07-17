@@ -32,36 +32,44 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         self.contacts_cache = None
 
-    def edit_first_contact(self, contact):
+    def edit_first_contact(self):
+        self.edit_contact_by_index(0)
+
+    def edit_contact_by_index(self, index, new_contact_data):
         wd = self.app.wd
         self.home_page()
-        #select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         #init edit contact
-        wd.find_element_by_xpath("//*[@title='Edit']").click()
+        wd.find_elements_by_xpath("//*[@title='Edit']")[index].click()
         #fill edit contact form
-        self.fill_contact_form(contact)
+        self.fill_contact_form(new_contact_data)
         #submit edit contact
         wd.find_element_by_name("update").click()
         wd.find_element_by_link_text("home").click()
         self.contacts_cache = None
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.home_page()
-        #select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         #submit deletion
         wd.find_element_by_xpath("//*[@type='button'][@value='Delete']").click()
         wd.switch_to.alert.accept()
         self.contacts_cache = None
+
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def count_contacts(self):
         wd = self.app.wd
         self.home_page()
         return len(wd.find_elements_by_name("selected[]"))
 
-    contacts_cache = None  # для кэша
+    contacts_cache = None
 
     def get_contact_list(self):
         if self.contacts_cache is None:
