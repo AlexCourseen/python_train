@@ -4,13 +4,20 @@ from sys import maxsize
 class Contact:
 
     def __init__(self, firstName=None, lastName=None, homePhone=None, mobilePhone=None, workPhone=None,
-                 secondaryPhone=None, id=None):
+                 secondaryPhone=None, all_phones_from_home_page=None, address=None,email=None, email2=None, email3=None,
+                 all_emails_from_home_page=None, id=None):
         self.firstName = firstName
         self.lastName = lastName
         self.homePhone = homePhone
         self.mobilePhone = mobilePhone
         self.workPhone = workPhone
         self.secondaryPhone = secondaryPhone
+        self.all_phones_from_home_page = all_phones_from_home_page
+        self.address = address
+        self.email = email
+        self.email2 = email2
+        self.email3 = email3
+        self.all_emails_from_home_page = all_emails_from_home_page
         self.id = id
     # переопределение функции вывода на косоль - repr
     def __repr__(self):
