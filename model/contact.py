@@ -21,7 +21,8 @@ class Contact:
         self.id = id
     # переопределение функции вывода на косоль - repr
     def __repr__(self):
-        return "%s:%s:%s" % (self.id, self.firstName, self.lastName)
+        return "%s:%s:%s:%s:%s:%s" % (self.id, self.firstName, self.lastName, self.all_emails_from_home_page,
+                                      self.all_phones_from_home_page, self.address)
 
     # переопределение стандартной функции - eq, где other - объект с которым сранивать текущий объект self
     def __eq__(self, other):

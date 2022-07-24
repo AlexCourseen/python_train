@@ -11,7 +11,7 @@ class Group:
 
 # переопределение метода вывода на косоль - repr
     def __repr__(self):
-        return "%s:%s" % (self.id, self.name)
+        return "%s:%s:%s:%s" % (self.id, self.name, self.header, self.footer)
 #переопределение стандартной функции, где other - объект с которым сранивать текущий объект self
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) and self.name == other.name

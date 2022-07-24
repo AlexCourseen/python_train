@@ -8,7 +8,8 @@ class ContactHelper:
 
     def home_page(self):
         wd = self.app.wd
-        if not (wd.current_url.endswith("/addressbook") and len(wd.find_elements_by_xpath("//*[@type='button'][@value='Send e-Mail']")) > 0):
+        if not (#wd.current_url.endswith("/addressbook") and
+                len(wd.find_elements_by_xpath("//*[@type='button'][@value='Send e-Mail']")) > 0):
             wd.find_element_by_link_text("home").click()
 
     def change_contact_value(self, cont_field_name, text):
@@ -26,6 +27,11 @@ class ContactHelper:
         self.change_contact_value("mobile", contact.mobilePhone)
         self.change_contact_value("work", contact.workPhone)
         self.change_contact_value("phone2", contact.secondaryPhone)
+        self.change_contact_value("address", contact.address)
+        self.change_contact_value("email", contact.email)
+        self.change_contact_value("email2", contact.email2)
+        self.change_contact_value("email3", contact.email3)
+
 
     def add(self, new_contact_data):
         wd = self.app.wd
